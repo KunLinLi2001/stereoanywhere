@@ -184,7 +184,7 @@ class StereoAnywhere(nn.Module):
         coarse_ldispmonoconf3 = F.interpolate(coarse_ldispmonoconf3_lowres, scale_factor=(2**self.args.n_downsample), mode="bilinear", align_corners=True)
 
         softlrc_coarse_dispmono2_lowres, softlrc_coarse_dispmono3_lowres = softlrc(coarse_dispmono2_lowres, coarse_dispmono3_lowres, lrc_th=self.args.lrc_th)
-
+        # coarse_ldispmonoconf2_lowres是上面基于香农熵的置信度，coarse_dispmonoconf2_lowres是新置信度
         coarse_dispmonoconf2_lowres = fuzzy_and(coarse_ldispmonoconf2_lowres, softlrc_coarse_dispmono2_lowres)
         coarse_dispmonoconf3_lowres = fuzzy_and(coarse_ldispmonoconf3_lowres, softlrc_coarse_dispmono3_lowres)
 

@@ -187,7 +187,7 @@ def disp_warping(disp, img, right_disp=False):
     return warped_img
 
 def softlrc(disp2, disp3, lrc_th=1.0):
-    div_const = math.log(1+math.exp(lrc_th))
+    div_const = math.log(1+math.exp(lrc_th)) # 分子
 
     warped_disp2 = disp_warping(F.relu(disp3), disp2, right_disp=True) # B 1 H W
     warped_disp3 = disp_warping(F.relu(disp2), disp3, right_disp=False) # B 1 H W
